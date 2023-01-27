@@ -1,21 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  name ='mon site'
-  link= 'assets/incriment.png'
-  firstName='mon compte'
-  first='aaa'
-  constructor(){}
+export class HomeComponent implements OnInit,OnChanges,DoCheck {
+
+
+name ='prix achat'
+solde = 20
+
+today : number=Date.now();
+
+
+
+  constructor(private db:DatabaseService){
+    console.log(this.db.getName)
+  }
+
+
   ngOnInit(): void {
+    console.log('ngoninit')
     
   }
-  get(){
-    console.log(this.firstName) }
-   
+
+  ngOnChanges(){
+    console.log('onchanges')
+ 
+
+   }
+  ngDoCheck(){
+    console.log('docheck')
+ 
+
+   }
   
 }
